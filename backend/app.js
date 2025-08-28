@@ -17,7 +17,7 @@ app.use(express.json());
 const storage = multer.memoryStorage();
 const upload = multer({
     storage,
-    limits: { fileSize: 2 * 1024 * 1024 }, // 2 MB max per file
+    limits: { fileSize: 2 * 1024 * 1024 },
 });
 
 let embedder;
@@ -30,7 +30,7 @@ async function getEmbedder() {
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-const sessions = {}; // Stores embeddings per session
+const sessions = {};
 
 function chunkText(text, chunkSize = 512, overlap = 128) {
     const chunks = [];
@@ -40,7 +40,6 @@ function chunkText(text, chunkSize = 512, overlap = 128) {
     return chunks;
 }
 
-// Simple in-memory vector search
 function createInMemoryIndex(embeddings) {
     return {
         embeddings,
