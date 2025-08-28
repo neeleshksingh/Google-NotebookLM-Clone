@@ -54,7 +54,6 @@ app.post('/upload', upload.single('file'), async (req, res) => {
             return embedding;
         }));
 
-        console.log('Embeddings count:', embeddings.length);
         console.log('First embedding length:', embeddings[0]?.length || 0);
         console.log('Sample embedding:', embeddings[0]?.slice(0, 10) || []);
 
