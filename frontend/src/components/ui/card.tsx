@@ -1,9 +1,8 @@
-import React from "react"
-import { safeForwardRef as forwardRef } from "@/lib/forward-ref"
+import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-const Card = forwardRef<
+const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -18,7 +17,7 @@ const Card = forwardRef<
 ))
 Card.displayName = "Card"
 
-const CardHeader = forwardRef<
+const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -30,11 +29,11 @@ const CardHeader = forwardRef<
 ))
 CardHeader.displayName = "CardHeader"
 
-const CardTitle = forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
+const CardTitle = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <h3
+  <div
     ref={ref}
     className={cn(
       "text-2xl font-semibold leading-none tracking-tight",
@@ -45,11 +44,11 @@ const CardTitle = forwardRef<
 ))
 CardTitle.displayName = "CardTitle"
 
-const CardDescription = forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
+const CardDescription = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <p
+  <div
     ref={ref}
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
@@ -57,7 +56,7 @@ const CardDescription = forwardRef<
 ))
 CardDescription.displayName = "CardDescription"
 
-const CardContent = forwardRef<
+const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -65,7 +64,7 @@ const CardContent = forwardRef<
 ))
 CardContent.displayName = "CardContent"
 
-const CardFooter = forwardRef<
+const CardFooter = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
