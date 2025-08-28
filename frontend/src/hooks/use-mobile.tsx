@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { forwardRef } from "react"
 
 const MOBILE_BREAKPOINT = 768
 
