@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PDF Chat App Design System - Professional & Modern */
+
+@layer base {
+  :root {
+    /* Core Background & Text */
+    --background: 0 0% 99%;
+    --foreground: 218 25% 15%;
+
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 218 25% 15%;
+
+    /* Popover & Modals */
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 25% 15%;
+
+    /* Primary Brand - Deep Professional Blue */
+    --primary: 222 84% 35%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 222 84% 50%;
+
+    /* Secondary - Elegant Light Blue */
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 218 25% 25%;
+
+    /* Muted - Subtle Grays */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent - Vibrant Blue for Actions */
+    --accent: 212 92% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Chat & Interactive Elements */
+    --chat-user: 212 92% 55%;
+    --chat-user-foreground: 0 0% 98%;
+    --chat-assistant: 220 14% 96%;
+    --chat-assistant-foreground: 218 25% 15%;
+
+    /* Citation & Navigation */
+    --citation: 45 93% 47%;
+    --citation-foreground: 0 0% 98%;
+    --citation-hover: 45 93% 55%;
+
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    /* Borders & Inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 212 92% 55%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(222 84% 35%), hsl(212 92% 55%));
+    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
+    --gradient-accent: linear-gradient(135deg, hsl(212 92% 55%), hsl(222 84% 50%));
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsl(220 13% 91% / 0.5);
+    --shadow-medium: 0 4px 16px hsl(220 13% 91% / 0.6);
+    --shadow-strong: 0 8px 32px hsl(220 13% 91% / 0.7);
+    --shadow-primary: 0 4px 16px hsl(212 92% 55% / 0.25);
+
+    /* Layout */
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Core Background & Text */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 95%;
+
+    /* Cards & Surfaces */
+    --card: 222 47% 13%;
+    --card-foreground: 210 40% 95%;
+
+    /* Popover & Modals */
+    --popover: 222 47% 13%;
+    --popover-foreground: 210 40% 95%;
+
+    /* Primary Brand */
+    --primary: 212 92% 65%;
+    --primary-foreground: 222 47% 11%;
+    --primary-glow: 212 92% 75%;
+
+    /* Secondary */
+    --secondary: 217 32% 18%;
+    --secondary-foreground: 210 40% 95%;
+
+    /* Muted */
+    --muted: 217 32% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent */
+    --accent: 212 92% 65%;
+    --accent-foreground: 222 47% 11%;
+
+    /* Chat & Interactive Elements */
+    --chat-user: 212 92% 65%;
+    --chat-user-foreground: 222 47% 11%;
+    --chat-assistant: 217 32% 18%;
+    --chat-assistant-foreground: 210 40% 95%;
+
+    /* Citation & Navigation */
+    --citation: 45 93% 60%;
+    --citation-foreground: 222 47% 11%;
+    --citation-hover: 45 93% 70%;
+
+    /* Status Colors */
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 95%;
+    --success: 142 76% 40%;
+    --success-foreground: 210 40% 95%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 222 47% 11%;
+
+    /* Borders & Inputs */
+    --border: 217 32% 18%;
+    --input: 217 32% 18%;
+    --ring: 212 92% 65%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(212 92% 65%), hsl(222 84% 60%));
+    --gradient-surface: linear-gradient(180deg, hsl(222 47% 13%), hsl(222 47% 11%));
+    --gradient-accent: linear-gradient(135deg, hsl(212 92% 65%), hsl(212 92% 75%));
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px hsl(222 47% 11% / 0.5);
+    --shadow-medium: 0 4px 16px hsl(222 47% 11% / 0.6);
+    --shadow-strong: 0 8px 32px hsl(222 47% 11% / 0.7);
+    --shadow-primary: 0 4px 16px hsl(212 92% 65% / 0.25);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-medium;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+
+  /* Smooth animations */
+  * {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer components {
+  /* PDF Upload Area */
+  .upload-area {
+    @apply relative overflow-hidden;
+    background: var(--gradient-surface);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .upload-area::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 pointer-events-none;
+    background: var(--gradient-accent);
+    transition: opacity 0.3s ease;
+  }
+
+  .upload-area.drag-active::before {
+    @apply opacity-10;
+  }
+
+  /* Chat Message Animations */
+  @keyframes messageSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .message-enter {
+    animation: messageSlideIn 0.3s ease-out;
+  }
+
+  /* Citation Button */
+  .citation-btn {
+    @apply inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium;
+    background: hsl(var(--citation));
+    color: hsl(var(--citation-foreground));
+    box-shadow: var(--shadow-soft);
+    transition: all 0.2s ease;
+  }
+
+  .citation-btn:hover {
+    background: hsl(var(--citation-hover));
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
