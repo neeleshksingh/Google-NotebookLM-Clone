@@ -13,7 +13,6 @@ const port = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
-// Limit file size to prevent serverless crashes
 const storage = multer.memoryStorage();
 const upload = multer({
     storage,
