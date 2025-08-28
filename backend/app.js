@@ -223,6 +223,10 @@ app.post('/chat', async (req, res) => {
     }
 });
 
+app.get('/', (req, res) => res.status(200).send('Backend OK'));
+
+app.use((req, res) => res.status(404).send('API not found'));
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
