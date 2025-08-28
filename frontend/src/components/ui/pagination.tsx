@@ -1,4 +1,5 @@
-import React, { forwardRef } from "react"
+import React from "react"
+import { safeForwardRef as forwardRef } from "@/lib/forward-ref"
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/lib/utils"

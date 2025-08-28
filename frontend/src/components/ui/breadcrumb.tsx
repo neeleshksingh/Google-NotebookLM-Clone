@@ -1,4 +1,5 @@
-import React, { forwardRef } from "react"
+import React from "react"
+import { safeForwardRef as forwardRef } from "@/lib/forward-ref"
 import { Slot } from "@radix-ui/react-slot"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
 

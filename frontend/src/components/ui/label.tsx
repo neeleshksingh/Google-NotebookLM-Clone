@@ -1,4 +1,5 @@
-import React, { forwardRef } from "react"
+import React from "react"
+import { safeForwardRef as forwardRef } from "@/lib/forward-ref"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { cva, type VariantProps } from "class-variance-authority"
 

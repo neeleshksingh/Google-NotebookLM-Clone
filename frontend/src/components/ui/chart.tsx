@@ -1,4 +1,5 @@
-import React, { forwardRef } from "react"
+import React from "react"
+import { safeForwardRef as forwardRef } from "@/lib/forward-ref"
 import * as RechartsPrimitive from "recharts"
 
 import { cn } from "@/lib/utils"
