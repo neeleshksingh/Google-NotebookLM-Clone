@@ -25,7 +25,7 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
     formData.append('file', file);
 
     try {
-      const response = await fetch('https://google-notebooklm-clone-a4ex.onrender.com/upload', {
+      const response = await fetch(import.meta.env.VITE_API_UPLOAD_URL, {
         method: 'POST',
         body: formData,
       });

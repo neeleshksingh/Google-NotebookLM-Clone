@@ -56,8 +56,10 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       throw new Error('No session ID available');
     }
 
+    const chatApiUrl = import.meta.env.VITE_API_CHAT_URL;
+
     try {
-      const response = await fetch('https://google-notebooklm-clone-a4ex.onrender.com/chat', {
+      const response = await fetch(chatApiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
