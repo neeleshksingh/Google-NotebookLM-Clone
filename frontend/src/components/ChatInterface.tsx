@@ -1,3 +1,4 @@
+"use client";
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -56,10 +57,10 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       throw new Error('No session ID available');
     }
 
-    const chatApiUrl = import.meta.env.VITE_API_CHAT_URL;
+    const chatUrl = process.env.NEXT_PUBLIC_API_CHAT_URL || '';
 
     try {
-      const response = await fetch(chatApiUrl, {
+      const response = await fetch(chatUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

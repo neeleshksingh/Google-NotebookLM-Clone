@@ -1,3 +1,4 @@
+"use client";
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Upload, FileText, X } from 'lucide-react';
@@ -18,27 +19,24 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
 }) => {
   const [isDragActive, setIsDragActive] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
-  const { toast } = useToast();
+  const toast = useToast();
 
   const uploadToAPI = async (file: File) => {
     const formData = new FormData();
     formData.append('file', file);
+    const uploadUrl = process.env.NEXT_PUBLIC_API_UPLOAD_URL || '';
 
-    try {
-      const response = await fetch(import.meta.env.VITE_API_UPLOAD_URL, {
-        method: 'POST',
-        body: formData,
-      });
+    const response = await fetch(uploadUrl, {
+      method: 'POST',
+      body: formData,
+    });
 
-      if (!response.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const data = await response.json();
-      return data.session_id;
-    } catch (error) {
-      throw error;
+    if (!response.ok) {
+      throw new Error('Upload failed');
     }
+
+    const data = await response.json();
+    return data.session_id;
   };
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
@@ -48,24 +46,19 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
       try {
         const sessionId = await uploadToAPI(file);
         onFileSelect(file, sessionId);
-        toast({
-          title: "PDF uploaded successfully",
+        toast.success("PDF uploaded successfully", {
           description: `${file.name} is ready for analysis`,
         });
       } catch (error) {
-        toast({
-          title: "Upload failed",
+        toast.error("Upload failed", {
           description: "There was an error uploading your PDF. Please try again.",
-          variant: "destructive",
         });
       } finally {
         setIsUploading(false);
       }
     } else {
-      toast({
-        title: "Invalid file type",
+      toast.error("Invalid file type", {
         description: "Please upload a PDF file",
-        variant: "destructive",
       });
     }
     setIsDragActive(false);
@@ -73,9 +66,7 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: {
-      'application/pdf': ['.pdf']
-    },
+    accept: { 'application/pdf': ['.pdf'] },
     multiple: false,
     onDragEnter: () => setIsDragActive(true),
     onDragLeave: () => setIsDragActive(false),

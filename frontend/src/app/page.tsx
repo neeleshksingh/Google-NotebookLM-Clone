@@ -1,11 +1,14 @@
-import { useState } from 'react';
-import { PDFUpload } from '@/components/PDFUpload';
-import { PDFViewer } from '@/components/PDFViewer';
-import { ChatInterface } from '@/components/ChatInterface';
-import { Button } from '@/components/ui/button';
-import { FileText, MessageSquare, Sparkles } from 'lucide-react';
+"use client";
 
-const Index = () => {
+import React from "react";
+import { ChatInterface } from "@/components/ChatInterface";
+import { PDFUpload } from "@/components/PDFUpload";
+import { PDFViewer } from "@/components/PDFViewer";
+import { Button } from "@/components/ui/button";
+import { FileText } from "lucide-react";
+import { useState } from "react";
+
+export default function Home() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [highlightPage, setHighlightPage] = useState<number | undefined>();
@@ -87,5 +90,3 @@ const Index = () => {
     </div>
   );
 };
-
-export default Index;
