@@ -58,13 +58,11 @@ export const PDFViewer: React.FC<PDFViewerProps> = ({ file, highlightPage }) => 
   useEffect(() => {
     if (!loading) return;
     const timer = setTimeout(() => {
-      toast.error("PDF loading timeout", {
-        description: "The PDF is taking too long to load. Please try again.",
-      });
+      
       setLoading(false);
     }, 10000);
     return () => clearTimeout(timer);
-  }, [loading, toast]);
+  }, [loading]);
 
   const goToPreviousPage = () => setPageNumber((p) => Math.max(1, p - 1));
   const goToNextPage = () => setPageNumber((p) => Math.min(numPages, p + 1));
