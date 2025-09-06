@@ -24,7 +24,9 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
   const uploadToAPI = async (file: File) => {
     const formData = new FormData();
     formData.append('file', file);
-    const uploadUrl = process.env.NEXT_PUBLIC_API_UPLOAD_URL || '';
+    
+    // Critical fix: Provide default URL if environment variable is missing  
+    const uploadUrl = process.env.NEXT_PUBLIC_API_UPLOAD_URL || 'http://localhost:8000/upload';
 
     const response = await fetch(uploadUrl, {
       method: 'POST',
@@ -32,7 +34,8 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
     });
 
     if (!response.ok) {
-      throw new Error('Upload failed');
+      const errorData = await response.json().catch(() => ({ error: 'Upload failed' }));
+      throw new Error(errorData.error || 'Upload failed');
     }
 
     const data = await response.json();
@@ -40,6 +43,11 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
   };
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
+    // Critical fix: Prevent race conditions with multiple uploads
+    if (isUploading) {
+      return;
+    }
+    
     const file = acceptedFiles[0];
     if (file && file.type === 'application/pdf') {
       setIsUploading(true);
@@ -51,7 +59,7 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
         });
       } catch (error) {
         toast.error("Upload failed", {
-          description: "There was an error uploading your PDF. Please try again.",
+          description: error instanceof Error ? error.message : "There was an error uploading your PDF. Please try again.",
         });
       } finally {
         setIsUploading(false);
@@ -62,7 +70,7 @@ export const PDFUpload: React.FC<PDFUploadProps> = ({
       });
     }
     setIsDragActive(false);
-  }, [onFileSelect, toast]);
+  }, [onFileSelect, toast, isUploading]);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,

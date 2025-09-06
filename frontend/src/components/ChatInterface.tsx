@@ -57,7 +57,8 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       throw new Error('No session ID available');
     }
 
-    const chatUrl = process.env.NEXT_PUBLIC_API_CHAT_URL || '';
+    // Critical fix: Provide default URL if environment variable is missing
+    const chatUrl = process.env.NEXT_PUBLIC_API_CHAT_URL || 'http://localhost:8000/chat';
 
     try {
       const response = await fetch(chatUrl, {
@@ -78,7 +79,10 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       const data = await response.json();
 
       // Parse citations from response if they exist
-      const citations = data.citations || [];
+      const citations = data.citations ? data.citations.map((page: number) => ({
+        page: page,
+        text: `Page ${page}`
+      })) : [];
 
       return {
         id: Date.now().toString(),
@@ -88,6 +92,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
         timestamp: new Date(),
       };
     } catch (error) {
+      console.error('Chat API error:', error);
       return {
         id: Date.now().toString(),
         type: 'assistant',
@@ -116,6 +121,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
       const aiResponse = await callChatAPI(messageContent);
       setMessages(prev => [...prev, aiResponse]);
     } catch (error) {
+      console.error('Chat error:', error);
       const errorMessage: ChatMessage = {
         id: Date.now().toString(),
         type: 'assistant',
